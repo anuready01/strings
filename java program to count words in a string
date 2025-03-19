@@ -1,26 +1,17 @@
-// Online Java Compiler
-// Use this editor to write, compile and run your Java code online
+class Main{
+public static void main(String[] args){
+String s="java is easy very easy java";
 
-class Main {
-    public static void main(String[] args) {
-        String s="ANU#@sajjan5677";
-          int uc=0,lc=0,nc=0,sc=0;
-           for(int i=0;i<s.length();i++){
-               char ch=s.charAt(i);
-               if(ch>='A'&&ch<='Z'){
-                   uc++;
-               }else if(ch>='a'&&ch<='z'){
-                   lc++;
-               }else if(ch>='0'&&ch<='9'){
-                   nc++;
-               }else{
-                   sc++;
-               }
-           }
-           
-           System.out.println("uppercase count:"+uc);
-           System.out.println("lowercase count:"+lc);
-           System.out.println("numbercase count:"+nc);
-           System.out.println("specialcase count:"+sc);
-    }
+String[] str=s.split();
+for(int i=0;i<str.length;i++){
+if(str[i]==" ") continue;
+int count=1;
+for(int j=i+1;j<str.length;j++){
+if(str[i].equals(str[j])){
+count++;
+str[j]=" ";
+}
+}
+System.out.println(str[i]+"="+count);
+}
 }
