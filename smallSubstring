@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class SmallestPalindromeSubstring {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        
+        scanner.close();
+        
+        String result = findSmallestPalindromeSubstring(input);
+        System.out.println("Smallest palindrome substring: " + result);
+    }
+    
+    public static boolean isPalindrome(String str, int start, int end) {
+        while (start < end) {
+            if (str.charAt(start) != str.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+    
+    public static String findSmallestPalindromeSubstring(String str) {
+        int minLength = Integer.MAX_VALUE;
+        String smallestPalindrome = "";
+        
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = i + 1; j < str.length(); j++) { // Ensure substring length > 1
+                if (isPalindrome(str, i, j)) {
+                    int length = j - i + 1;
+                    if (length < minLength) {
+                        minLength = length;
+                        smallestPalindrome = str.substring(i, j + 1);
+                    }
+                }
+            }
+        }
+        
+        return smallestPalindrome.isEmpty() ? "No palindrome found" : smallestPalindrome;
+    }
+}
