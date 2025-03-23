@@ -1,0 +1,43 @@
+class Main {
+    public static void main(String[] args) {
+        String input = "abeijho";
+        System.out.println(replaceVowels(input));
+}
+public static String replaceVowels(String str) {
+int vowelCount = 0;
+char[] vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O','U'};
+        for (char ch : str.toCharArray()) {
+            for (int j = 0; j < vowels.length; j++) {
+                if (ch == vowels[j]) {
+                vowelCount++;
+                break;
+              }
+       }
+}
+if (vowelCount > 3) {
+    char[] charArray = str.toCharArray();
+    for (int i = 0; i < charArray.length; i++) {
+        for (int j = 0; j < vowels.length; j++) {
+            if (charArray[i] == vowels[j]) {
+                charArray[i] = '_';
+                break;
+                 }
+               }
+            }
+            return new String(charArray);
+         }
+            return str;
+           }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
