@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+class MinOccurrenceCharacter {
+    public static void findMinOccurrence(String str) {
+        int[] freq = new int[256]; // ASCII character frequency array
+
+        // Count occurrences of each character
+        for (char ch : str.toCharArray()) {
+            freq[ch]++;
+        }
+
+        // Find the character with the minimum occurrences (non-zero)
+        char minChar = '\0';
+        int minCount = Integer.MAX_VALUE;
+
+        for (char ch : str.toCharArray()) {
+            if (freq[ch] > 0 && freq[ch] < minCount) {
+                minCount = freq[ch];
+                minChar = ch;
+            }
+        }
+
+        System.out.println("Character with minimum occurrence: '" + minChar + "'");
+        System.out.println("Count: " + minCount);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        findMinOccurrence(input);
+
+        scanner.close();
+    }
+}
