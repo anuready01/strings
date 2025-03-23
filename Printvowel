@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+class VowelPrinter {
+    public static void printVowels(String str) {
+        str = str.toLowerCase(); // Convert to lowercase for case insensitivity
+        System.out.print("Vowels in the string: ");
+
+        boolean foundVowel = false;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                System.out.print(ch + " ");
+                foundVowel = true;
+            }
+        }
+        
+        if (!foundVowel) {
+            System.out.print("No vowels found.");
+        }
+
+        System.out.println(); // Move to the next line after printing vowels
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        printVowels(input);
+        
+        scanner.close();
+    }
+}
