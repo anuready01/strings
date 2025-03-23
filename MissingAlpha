@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine().toLowerCase(); // Convert to lowercase for case insensitivity
+        scanner.close();
+        
+        String missingLetters = findMissingAlphabets(input);
+        
+        if (missingLetters.isEmpty()) {
+            System.out.println("No missing letters, the input contains all alphabets.");
+        } else {
+            System.out.println("Missing letters: " + missingLetters);
+        }
+    }
+    
+    public static String findMissingAlphabets(String str) {
+        String alphabets = "abcdefghijklmnopqrstuvwxyz";
+        String missing = "";
+        
+        for (char ch : alphabets.toCharArray()) {
+            if (str.indexOf(ch) == -1) { // Check if character is not present in the input string
+                missing += ch;
+            }
+        }
+        
+        return missing;
+    }
+}
