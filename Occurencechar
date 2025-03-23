@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class CharacterOccurrence {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        
+        scanner.close();
+        
+        countCharacterOccurrences(input);
+    }
+    
+    public static void countCharacterOccurrences(String str) {
+        while (!str.isEmpty()) {
+            char ch = str.charAt(0);
+            int count = str.length() - str.replace(String.valueOf(ch), "").length();
+            
+            System.out.println("The character '" + ch + "' appears " + count + " times in the string.");
+            
+            str = str.replace(String.valueOf(ch), ""); // Remove counted character
+        }
+    }
+}
