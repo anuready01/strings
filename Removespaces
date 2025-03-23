@@ -1,0 +1,26 @@
+public class TrimSpaces {
+    public static void main(String[] args) {
+        String input = "__java _is _easy__";
+        System.out.println(cleanString(input));
+    }
+
+    public static String cleanString(String str) {
+        // Trim leading and trailing spaces
+        str = str.trim();
+        
+        // Remove leading underscores
+        int start = 0;
+        while (start < str.length() && str.charAt(start) == '_') {
+            start++;
+        }
+        
+        // Remove trailing underscores
+        int end = str.length() - 1;
+        while (end >= 0 && str.charAt(end) == '_') {
+            end--;
+        }
+        
+        // Extract cleaned substring and replace remaining underscores with spaces
+        return str.substring(start, end + 1).replace('_', ' ');
+    }
+}
