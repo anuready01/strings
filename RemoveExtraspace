@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class RemoveExtraSpaces {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        scanner.close();
+        
+        String result = removeExtraSpaces(input);
+        System.out.println("Modified string: " + result);
+    }
+    
+    public static String removeExtraSpaces(String str) {
+        String result = "";
+        boolean isPrevSpace = false;
+        
+        for (char ch : str.toCharArray()) {
+            if (ch == '_') {
+                if (!isPrevSpace) {
+                    result += ch;
+                }
+                isPrevSpace = true;
+            } else {
+                result += ch;
+                isPrevSpace = false;
+            }
+        }
+        
+        return result;
+    }
+}
