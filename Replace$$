@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class ReplaceDuplicates {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        scanner.close();
+        
+        String result = replaceDuplicates(input);
+        System.out.println("Modified string: " + result);
+    }
+    
+    public static String replaceDuplicates(String str) {
+        String result = "";
+        int i = 0;
+        
+        while (i < str.length()) {
+            char currentChar = str.charAt(i);
+            result += currentChar;
+            
+            int j = i + 1;
+            boolean hasDuplicates = false;
+            
+            while (j < str.length() && str.charAt(j) == currentChar) {
+                hasDuplicates = true;
+                j++;
+            }
+            
+            if (hasDuplicates) {
+                result += "$$";
+            }
+            
+            i = j;
+        }
+        
+        return result;
+    }
+}
