@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+class MaxOccurrenceCharacter {
+    public static void findMaxOccurrence(String str) {
+        int[] freq = new int[256]; // ASCII character frequency array
+
+        // Count occurrences of each character
+        for (char ch : str.toCharArray()) {
+            freq[ch]++;
+        }
+
+        // Find the character with the maximum occurrences
+        char maxChar = str.charAt(0);
+        int maxCount = 0;
+
+        for (char ch : str.toCharArray()) {
+            if (freq[ch] > maxCount) {
+                maxCount = freq[ch];
+                maxChar = ch;
+            }
+        }
+
+        System.out.println("Character with maximum occurrence: '" + maxChar + "'");
+        System.out.println("Count: " + maxCount);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        findMaxOccurrence(input);
+
+        scanner.close();
+    }
+}
