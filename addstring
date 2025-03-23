@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class AsciiSum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        
+        scanner.close();
+        
+        String result = calculateAsciiSum(input);
+        System.out.println(result);
+    }
+    
+    public static String calculateAsciiSum(String str) {
+        int sum = 0;
+        String expression = "";
+        
+        for (int i = 0; i < str.length(); i++) {
+            int ascii = (int) str.charAt(i);
+            sum += ascii;
+            expression += ascii;
+            
+            if (i < str.length() - 1) {
+                expression += "+";
+            }
+        }
+        
+        return expression + "=" + sum;
+    }
+}
