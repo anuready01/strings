@@ -1,0 +1,33 @@
+public class Main {
+    public static void main(String[] args) {
+        String s = "anusha";
+        char[] chars = s.toCharArray();
+        int vowelCount = 0;
+
+        // Count vowels manually
+        for (int i = 0; i < chars.length; i++) {
+            char c = Character.toLowerCase(chars[i]);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                vowelCount++;
+            }
+        }
+
+        // Replace vowels with '_' if count > 3
+        if (vowelCount > 3) {
+            for (int i = 0; i < chars.length; i++) {
+                char c = Character.toLowerCase(chars[i]);
+                if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                    chars[i] = '_';
+                }
+            }
+        }
+
+        // Convert char array back to string
+        String result = "";
+        for (int i = 0; i < chars.length; i++) {
+            result += chars[i];
+        }
+        
+        System.out.println("Modified String: " + result);
+    }
+}
