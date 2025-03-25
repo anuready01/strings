@@ -1,0 +1,31 @@
+public class CountSegmentsWithoutBuiltIn {
+    public static void main(String[] args) {
+        String s1 = "Hello, my name is John";
+        String s2 = "Hello";
+        String s3 = "   "; // Edge case: Only spaces
+        String s4 = "One   two   three"; // Edge case: Multiple spaces between words
+
+        System.out.println("Output: " + countSegments(s1)); // Output: 5
+        System.out.println("Output: " + countSegments(s2)); // Output: 1
+        System.out.println("Output: " + countSegments(s3)); // Output: 0
+        System.out.println("Output: " + countSegments(s4)); // Output: 3
+    }
+
+    public static int countSegments(String s) {
+        int count = 0;
+        boolean inSegment = false;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != ' ') { // Found a non-space character
+                if (!inSegment) { // Start of a new segment
+                    count++;
+                    inSegment = true;
+                }
+            } else { // Found a space
+                inSegment = false;
+            }
+        }
+
+        return count;
+    }
+}
